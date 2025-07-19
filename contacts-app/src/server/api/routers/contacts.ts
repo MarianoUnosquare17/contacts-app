@@ -3,9 +3,18 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import type { Contact } from "@prisma/client";
 
 //Mock data
-let nextId = 1;
+const newId = 1;
 const contacts: Contact[] = [
-
+  {
+    id: newId,
+    firstName: "Mariano",
+    lastName: "Estrada",
+    email: "mariano.estrada@unosquare.com",
+    phone: "12341243451",
+    company: "Unosquare",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
 ];
 
 //add zod validations
@@ -35,8 +44,10 @@ export const contactsRouter = createTRPCRouter({
         }
       }
 
+      let newId = contacts.length > 0 ? Math.max(...contacts.map((contact) => contact.id)) + 1 : 1;
+
       const newContact = {
-        id: nextId + 1,
+        id: newId++,
         firstName: input.firstName,
         lastName: input.lastName,
         email: input.email,
