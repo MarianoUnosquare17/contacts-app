@@ -63,7 +63,7 @@ export default function ContactTable() {
           {contacts?.length === 0 && (
             <TableRow>
               <TableHead
-                colSpan={5}
+                colSpan={6}
                 className="text-bg mx-2 text-center font-bold"
               >
                 No contacts found
