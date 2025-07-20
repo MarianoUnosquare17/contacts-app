@@ -36,6 +36,9 @@ export default function ContactDialog() {
       utils.contacts.getContacts.invalidate();
       setOpen(false);
     },
+    onError: (error) => {
+      alert(error.message);
+    }
   });
 
   //form logic
@@ -54,7 +57,7 @@ export default function ContactDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="mt-4">
+        <Button variant="default" className="mt-4">
           Add a contact
         </Button>
       </DialogTrigger>
@@ -66,14 +69,29 @@ export default function ContactDialog() {
           <div className="p-4">
             <Label className="mb-3">Name</Label>
             <Input id="firstName" {...register("firstName")} />
+            {errors.firstName && (
+              <p className="mt-1 text-sm text-red-500">
+                {errors.firstName.message}
+              </p>
+            )}
           </div>
           <div className="p-4">
             <Label className="mb-3">Last Name</Label>
             <Input id="lastName" {...register("lastName")} />
+            {errors.lastName && (
+              <p className="mt-1 text-sm text-red-500">
+                {errors.lastName.message}
+              </p>
+            )}
           </div>
           <div className="p-4">
             <Label className="mb-3">Email</Label>
             <Input id="email" {...register("email")} />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-500">
+                {errors.email.message}
+              </p>
+            )}
           </div>
           <div className="p-4">
             <Label className="mb-3">Phone</Label>
@@ -85,9 +103,9 @@ export default function ContactDialog() {
           </div>
           <div className="flex justify-end space-x-2 p-4">
             <DialogClose asChild>
-              <Button variant="outline">Close</Button>
+              <Button variant="secondary">Close</Button>
             </DialogClose>
-            <Button variant="outline">Submit</Button>
+            <Button variant="default">{mutation.isPending ? 'Creating' : 'Submit'}</Button>
           </div>
         </form>
       </DialogContent>

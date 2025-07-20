@@ -60,4 +60,13 @@ export const contactsRouter = createTRPCRouter({
       contacts.push(newContact);
       return newContact;
     }),
+
+  deleteContact: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(({ input }) => {
+      const index = contacts.findIndex((contact) => contact.id === input.id);
+      contacts.splice(index, 1);
+      return { success: true };
+    })
+    
 });
