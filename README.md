@@ -48,3 +48,4 @@ shadcn/ui: UI components.
 
 ## Final notes and thoughts
 Despite this being my first time using this tech stack, I found this as a great oportunity to gain some experience from it. I would have loved to implement some extra features like the ability for the user to edit a contact as well as polishing my code a bit more.
+Tried to deploy it to vercel but wasnt really able to.
