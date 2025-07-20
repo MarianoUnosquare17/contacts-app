@@ -56,6 +56,7 @@ export default function ContactTable() {
             <TableHead>Email</TableHead>
             <TableHead>Phone</TableHead>
             <TableHead>Company</TableHead>
+            <TableHead>Delete</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
