@@ -8,7 +8,6 @@ import {
   TableRow,
 } from "~/components/ui/table";
 import { Button } from "./ui/button";
-import { de } from "zod/v4/locales";
 
 export default function ContactTable() {
   const utils = api.useContext();
